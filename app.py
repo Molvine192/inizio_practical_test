@@ -7,11 +7,11 @@ import httpx, os, csv, io, json
 app = FastAPI()
 
 # подключаем статику
-app.mount("/static", StaticFiles(directory="."), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def read_root():
-    return FileResponse(os.path.join(os.path.dirname(__file__), "index.html"))
+    return FileResponse("static/index.html")
 
 from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
