@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Praktický test – Google 1. strana</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main>
+    <h1>Google – výsledky (1. strana)</h1>
+
+    <form id="searchForm">
+      <input
+        id="q"
+        name="q"
+        type="text"
+        placeholder="Zadejte klíčové slovní spojení…"
+        required
+      />
+      <button type="submit">Hledat</button>
+
+      <button id="btnJson" type="button">Stáhnout JSON</button>
+      <button id="btnCsv" type="button">Stáhnout CSV</button>
+    </form>
+
+    <section id="results" aria-live="polite"></section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

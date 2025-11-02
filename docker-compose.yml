@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    container_name: inizio_api
+    ports:
+      - "8000:8000"
+    environment:
+      - SERPAPI_API_KEY=e6d4ecb4845aaa8ed27f05d443cf82721e64e7673c9b0aa9f0d60b3d03e6634f
