@@ -3,10 +3,12 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 import httpx, os, csv, io, json
+import logging
+
+logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI()
 
-# подключаем статику
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
