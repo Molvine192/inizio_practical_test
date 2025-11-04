@@ -1,10 +1,10 @@
-# ===== FRONTEND BUILD =====
+# ===== FRONTEND =====
 FROM node:20 AS frontend
 WORKDIR /front
 COPY frontend/package*.json ./
 RUN npm ci
 COPY frontend/ .
-RUN npm run build
+RUN npm run build          # Vite → dist, CRA → build
 
 # ===== BACKEND =====
 FROM python:3.12-slim AS backend
@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p /app/static && rm -rf /app/static/* \
- && cp -r /front/dist/* /app/static/
+RUN mkdir -p /app/static && rm -rf /app/static/*
+COPY --from=frontend /front/dist/ /app/static/
 
 ENV PORT=8000
 EXPOSE 8000
